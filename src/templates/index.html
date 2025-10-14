@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waste Management - Recycling Rate Predictor</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #11998e;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            margin-top: 30px;
+            padding: 12px;
+            background-color: #11998e;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0d786d;
+        }
+
+        .result {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Recycling Rate Predictor</h2>
+    <form action="/predict" method="POST">
+        <label>Waste Generated (Tons/Day)</label>
+        <input type="text" name="Waste Generated">
+
+        <label>Population Density</label>
+        <input type="text" name="Population Density">
+
+        <label>Municipal Efficiency Score</label>
+        <input type="text" name="Municipal Efficiency Score">
+
+        <label>Cost of Waste Management (₹/Ton)</label>
+        <input type="text" name="Cost of Waste Management">
+
+        <label>Awareness Campaigns Count</label>
+        <input type="text" name="Awareness Campaigns Count">
+
+        <label>Landfill Capacity (Tons)</label>
+        <input type="text" name="Landfill Capacity">
+
+        <label>Year</label>
+        <input type="text" name="Year">
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <div class="result">{{ prediction }}</div>
+    {% endif %}
+</div>
+
+</body>
+</html>
