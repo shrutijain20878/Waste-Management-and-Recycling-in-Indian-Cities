@@ -2,10 +2,13 @@ from flask import Flask, request, render_template
 import joblib
 import numpy as np
 import pandas as pd
-
+from pathlib import Path
 app = Flask(__name__)
 
-model = joblib.load('models\trained_model.pkl')
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR.parent / "models" / "trained_model.pkl"
+
+model = joblib.load(MODEL_PATH)
 
 @app.route('/')
 def home():
